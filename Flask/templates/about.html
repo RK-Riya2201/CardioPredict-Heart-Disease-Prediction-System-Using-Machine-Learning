@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | CardioPredict</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a, #4f46e5);
+            color: #1f2937;
+            position: relative;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ECG Background */
+        .ecg-bg {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            z-index: 0;
+            transform: translateY(-50%);
+            overflow: hidden;
+        }
+
+        .ecg-bg svg {
+            width: 100%;
+            height: 100%;
+            stroke: #ffffff;
+            stroke-width: 2;
+            fill: none;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col">
+
+    <!-- ECG Background -->
+    <div class="ecg-bg">
+        <svg viewBox="0 0 200 100" preserveAspectRatio="none">
+            <polyline
+                points="0,50 20,50 25,30 35,70 45,50 60,50 65,20 75,80 85,50 100,50 110,50 115,30 125,70 135,50 150,50 165,20 175,80 185,50 200,50">
+            </polyline>
+        </svg>
+    </div>
+
+    <!-- Navigation -->
+    <header class="bg-gray-900 bg-opacity-80 shadow-md relative z-10">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-2xl sm:text-3xl font-extrabold text-white tracking-wide">CardioPredict</div>
+            <div class="space-x-6">
+                <a href="/" class="text-gray-300 hover:text-red-400 font-medium text-lg transition">Home</a>
+                <a href="/about"
+                    class="text-red-500 font-bold text-lg border-b-2 border-red-500 pb-1 transition">About</a>
+                <a href="/predict" class="text-gray-300 hover:text-red-400 font-medium text-lg transition">Predict
+                    Risk</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 fade-in">
+        <div
+            class="max-w-5xl mx-auto bg-white/80 backdrop-blur-xl p-12 sm:p-16 rounded-3xl shadow-2xl border border-gray-100 hover:shadow-red-200 transition-shadow duration-300">
+
+            <h1
+                class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-8 text-center bg-gradient-to-r from-red-500 via-pink-500 to-purple-600 text-transparent bg-clip-text leading-tight">
+                About CardioPredict
+            </h1>
+
+            <p class="text-lg sm:text-xl text-gray-800 mb-8 leading-relaxed">
+                <strong>CardioPredict</strong> is an machine learning-based web application to predict heart disease risk. It
+                leverages clinical data and machine learning to provide early detection and preventive insights.
+            </p>
+
+            <h2 class="text-2xl font-bold text-red-500 mb-4">Input Features</h2>
+            <ul class="list-disc list-inside space-y-3 text-gray-700 pl-4 mb-8 leading-relaxed">
+                <li><strong>Age, Sex:</strong> Basic demographic information.</li>
+                <li><strong>Chest Pain Type (cp):</strong> Typical/atypical/non-anginal/asymptomatic.</li>
+                <li><strong>Resting Blood Pressure (trestbps):</strong> Measured in mm Hg.</li>
+                <li><strong>Serum Cholesterol (chol):</strong> Measured in mg/dl.</li>
+                <li><strong>Fasting Blood Sugar (fbs):</strong> >120 mg/dl (1) or ≤120 mg/dl (0).</li>
+                <li><strong>Resting ECG Results (restecg):</strong> Normal, ST-T abnormality, or LV hypertrophy.</li>
+                <li><strong>Maximum Heart Rate (thalach):</strong> Highest heart rate during exercise.</li>
+                <li><strong>Exercise Induced Angina (exang):</strong> Yes (1) or No (0).</li>
+                <li><strong>ST Depression (oldpeak):</strong> Exercise-induced vs rest.</li>
+                <li><strong>ST Segment Slope (slope):</strong> Upsloping, flat, or downsloping.</li>
+                <li><strong>Major Vessels (ca):</strong> 0–3 colored by fluoroscopy.</li>
+                <li><strong>Thalassemia (thal):</strong> Normal, fixed, or reversible defect.</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold text-red-500 mb-4">How It Works</h2>
+            <p class="text-gray-800 mb-8 leading-relaxed">
+                CardioPredict uses a trained machine learning model. Clinical parameters are analyzed to provide risk
+                assessment and guidance. This tool supports, not replaces, professional medical advice.
+            </p>
+
+            <h2 class="text-2xl font-bold text-red-500 mb-4">Benefits</h2>
+            <ul class="list-disc list-inside space-y-3 text-gray-700 pl-4 mb-8 leading-relaxed">
+                <li>Early identification of heart risks.</li>
+                <li>Informed health and lifestyle decisions.</li>
+                <li>Support for healthcare professionals.</li>
+                <li>Promotes preventive care and awareness.</li>
+            </ul>
+
+            <div class="p-6 bg-red-50 border border-red-200 rounded-lg text-red-700 shadow-inner">
+                <p class="font-semibold text-red-800 mb-2">Disclaimer:</p>
+                <p class="text-sm sm:text-base leading-relaxed">
+                    For informational purposes only. Not a substitute for professional diagnosis or treatment.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-6 text-center relative z-10">
+        <p class="text-sm sm:text-base text-gray-400">&copy; 2025 CardioPredict. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

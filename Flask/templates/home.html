@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Cardio Risk Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a, #4f46e5);
+            /* Smooth dark blue → purple gradient */
+            position: relative;
+        }
+
+        /* White static ECG line */
+        .ecg-bg {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            z-index: 0;
+            transform: translateY(-50%);
+            overflow: hidden;
+        }
+
+        .ecg-bg svg {
+            width: 100%;
+            height: 100%;
+            stroke: white;
+            /* white ECG line */
+            stroke-width: 2;
+            fill: none;
+            opacity: .75;
+            /* subtle background effect */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ECG Background -->
+    <div class="ecg-bg">
+        <svg viewBox="0 0 200 100" preserveAspectRatio="none">
+            <polyline
+                points="0,50 20,50 25,30 35,70 45,50 60,50 65,20 75,80 85,50 100,50 110,50 115,30 125,70 135,50 150,50 165,20 175,80 185,50 200,50">
+            </polyline>
+        </svg>
+    </div>
+
+    <!-- Navigation -->
+    <header class="bg-gray-900 bg-opacity-80 shadow-md relative z-10">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-white tracking-wide">CardioPredict</div>
+            <div class="space-x-6">
+                <a href="/"
+                    class="text-white hover:from-red-500 hover:to-pink-500 font-semibold border-b-2 border-transparent hover:border-red-500 transition">Home</a>
+                <a href="/about" class="text-gray-300 hover:text-white font-semibold transition">About</a>
+                <a href="/predict" class="text-gray-300 hover:text-white font-semibold transition">Predict Risk</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-32 flex items-center justify-center relative z-10">
+        <div class="relative text-center max-w-3xl bg-white p-12 rounded-3xl shadow-2xl border border-gray-200">
+            <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-6">
+                Heart Disease Risk Predictor
+            </h1>
+            <p
+                class="text-lg font-medium mb-10 bg-gradient-to-r from-red-700 via-pink-600 to-purple-700 text-transparent bg-clip-text">
+                Assess your heart disease risk using our Machine Learning model based on key clinical data. Early detection
+                saves lives.
+            </p>
+            <a href="/predict"
+                class="inline-block px-12 py-4 bg-red-700 text-white text-lg font-medium rounded-lg shadow-lg hover:bg-red-600 transition duration-300 transform hover:scale-105">
+                Start Prediction
+            </a>
+            <p
+                class="mt-6 text-sm font-medium bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 text-transparent bg-clip-text">
+                Gain insights to make better health decisions.
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-gray-700 py-6 text-center relative z-10">
+        <p class="text-sm text-gray-400">&copy; 2025 CardioPredict. All rights reserved.</p>
+        <p class="text-sm text-gray-300 mt-1">Designed for professional healthcare insights</p>
+    </footer>
+
+</body>
+
+</html>

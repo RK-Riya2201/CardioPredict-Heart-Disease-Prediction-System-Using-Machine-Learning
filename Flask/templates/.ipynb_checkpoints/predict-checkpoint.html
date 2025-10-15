@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Risk | Cardio Risk Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold text-red-600">CardioPredict</div>
+            <div class="space-x-4">
+                <a href="/" class="text-gray-600 hover:text-red-600 font-semibold">Home</a>
+                <a href="/about" class="text-gray-600 hover:text-red-600 font-semibold">About</a>
+                <a href="/predict"
+                    class="text-red-600 hover:text-red-800 font-semibold border-b-2 border-red-600">Predict Risk</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-2xl border border-gray-100">
+            <h1 class="text-4xl font-bold text-gray-900 mb-6 text-center">
+                Enter Patient Parameters
+            </h1>
+            <p class="text-center text-gray-600 mb-8">
+                Please provide the following clinical data to receive a heart disease risk prediction.
+            </p>
+
+            <form action="/submit" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- 1. age -->
+                <div>
+                    <label for="age" class="block text-sm font-medium text-gray-700">Age (years)</label>
+                    <input type="number" step="1" id="age" name="age" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border">
+                </div>
+
+                <!-- 2. sex -->
+                <div>
+                    <label for="sex" class="block text-sm font-medium text-gray-700">Sex</label>
+                    <select id="sex" name="sex" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border bg-white">
+                        <option value="">Select Sex</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+
+                <!-- 3. cp (Chest Pain Type) -->
+                <div>
+                    <label for="cp" class="block text-sm font-medium text-gray-700">Chest Pain Type (cp)</label>
+                    <select id="cp" name="cp" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border bg-white">
+                        <option value="">Select CP Type</option>
+                        <option value="0">Typical Angina (0)</option>
+                        <option value="1">Atypical Angina (1)</option>
+                        <option value="2">Non-Anginal Pain (2)</option>
+                        <option value="3">Asymptomatic (3)</option>
+                    </select>
+                </div>
+
+                <!-- 4. trestbps (Resting Blood Pressure) -->
+                <div>
+                    <label for="trestbps" class="block text-sm font-medium text-gray-700">Resting BP (mm Hg)</label>
+                    <input type="number" step="0.1" id="trestbps" name="trestbps" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border">
+                </div>
+
+                <!-- 5. chol (Serum Cholestoral) -->
+                <div>
+                    <label for="chol" class="block text-sm font-medium text-gray-700">Cholesterol (mg/dl)</label>
+                    <input type="number" step="0.1" id="chol" name="chol" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border">
+                </div>
+
+                <!-- 6. fbs (Fasting Blood Sugar > 120 mg/dl) -->
+                <div>
+                    <label for="fbs" class="block text-sm font-medium text-gray-700">Fasting Blood Sugar > 120
+                        mg/dl</label>
+                    <select id="fbs" name="fbs" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border bg-white">
+                        <option value="">Select</option>
+                        <option value="1">Yes (1)</option>
+                        <option value="0">No (0)</option>
+                    </select>
+                </div>
+
+                <!-- 7. restecg (Resting ECG Results) -->
+                <div>
+                    <label for="restecg" class="block text-sm font-medium text-gray-700">Resting ECG Results</label>
+                    <select id="restecg" name="restecg" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border bg-white">
+                        <option value="">Select Result</option>
+                        <option value="0">Normal (0)</option>
+                        <option value="1">ST-T wave abnormality (1)</option>
+                        <option value="2">Left ventricular hypertrophy (2)</option>
+                    </select>
+                </div>
+
+                <!-- 8. thalach (Max Heart Rate Achieved) -->
+                <div>
+                    <label for="thalach" class="block text-sm font-medium text-gray-700">Max Heart Rate
+                        (beats/min)</label>
+                    <input type="number" step="0.1" id="thalach" name="thalach" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border">
+                </div>
+
+                <!-- 9. exang (Exercise Induced Angina) -->
+                <div>
+                    <label for="exang" class="block text-sm font-medium text-gray-700">Exercise Induced Angina
+                        (exang)</label>
+                    <select id="exang" name="exang" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border bg-white">
+                        <option value="">Select</option>
+                        <option value="1">Yes (1)</option>
+                        <option value="0">No (0)</option>
+                    </select>
+                </div>
+
+                <!-- 10. oldpeak (ST depression induced by exercise) -->
+                <div>
+                    <label for="oldpeak" class="block text-sm font-medium text-gray-700">ST Depression (oldpeak)</label>
+                    <input type="number" step="0.1" id="oldpeak" name="oldpeak" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border">
+                </div>
+
+                <!-- 11. slope (Slope of the peak exercise ST segment) -->
+                <div>
+                    <label for="slope" class="block text-sm font-medium text-gray-700">Peak Exercise ST Slope</label>
+                    <select id="slope" name="slope" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border bg-white">
+                        <option value="">Select Slope</option>
+                        <option value="0">Upsloping (0)</option>
+                        <option value="1">Flat (1)</option>
+                        <option value="2">Downsloping (2)</option>
+                    </select>
+                </div>
+
+                <!-- 12. ca (Number of major vessels (0-3)) -->
+                <div>
+                    <label for="ca" class="block text-sm font-medium text-gray-700">Number of Major Vessels (ca)</label>
+                    <select id="ca" name="ca" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border bg-white">
+                        <option value="">Select Value</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <!-- 13. thal (Thalassemia) -->
+                <div class="md:col-span-2">
+                    <label for="thal" class="block text-sm font-medium text-gray-700">Thalassemia (thal)</label>
+                    <select id="thal" name="thal" required
+                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border bg-white">
+                        <option value="">Select Status</option>
+                        <option value="1">Normal (1)</option>
+                        <option value="2">Fixed Defect (2)</option>
+                        <option value="3">Reversible Defect (3)</option>
+                    </select>
+                </div>
+
+                <!-- Submission Button -->
+                <div class="md:col-span-2 mt-4">
+                    <button type="submit"
+                        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-lg font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150">
+                        Get Prediction
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-4 text-center mt-8">
+        <p class="text-sm text-gray-500">&copy; 2025 CardioPredict. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
